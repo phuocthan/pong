@@ -88,8 +88,10 @@ export default class Paddle extends cc.Component {
         if( this.isPlayer ) {
             return;
         }
+        const ratio = Utils.randomRange(70, 100, true)/100;
         const direction = Utils.randomRange( 0, 1, true ) === 0 ? 1 : -1;
-        this.missDistance = Utils.randomRange( this.getHeight() / 3, this.getHeight() / 2, true ) * direction;
+        this.missDistance = Utils.randomRange( this.getHeight() * ratio / 3 , this.getHeight() * ratio / 2 , true ) * direction;
+        
     }
 
     findDirectionForBOT ( posY, canMiss ) {

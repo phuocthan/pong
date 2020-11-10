@@ -4,7 +4,7 @@ import TimerCountdown from "./TimerCountdown";
 import { Utils } from "./Utils";
 
 const {ccclass, property} = cc._decorator;
-const DEFAULT_TIME_MATCH = 10;
+const DEFAULT_TIME_MATCH = 120;
 @ccclass
 export default class GameController extends cc.Component {
 
