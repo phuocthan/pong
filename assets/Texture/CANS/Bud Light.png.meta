@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "4fa60e7f-1320-4b54-86e4-607e8c70ab56",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 270,
+  "height": 670,
+  "platformSettings": {},
+  "subMetas": {
+    "Bud Light": {
+      "ver": "1.0.4",
+      "uuid": "20a7d858-fc22-48f4-b9f5-daa596e48988",
+      "rawTextureUuid": "4fa60e7f-1320-4b54-86e4-607e8c70ab56",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": -1,
+      "trimX": 13,
+      "trimY": 6,
+      "width": 241,
+      "height": 660,
+      "rawWidth": 270,
+      "rawHeight": 670,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

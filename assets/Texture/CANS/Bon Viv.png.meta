@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "4e3dce0f-6741-4792-a424-4bcbfe95d227",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 270,
+  "height": 670,
+  "platformSettings": {},
+  "subMetas": {
+    "Bon Viv": {
+      "ver": "1.0.4",
+      "uuid": "c584cedb-fcb2-4f9a-b5c8-e385d09d1ff3",
+      "rawTextureUuid": "4e3dce0f-6741-4792-a424-4bcbfe95d227",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": 0,
+      "trimX": 10,
+      "trimY": 5,
+      "width": 247,
+      "height": 660,
+      "rawWidth": 270,
+      "rawHeight": 670,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "5bf68e8c-0bfb-4d9d-a0e3-220af337972c",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 270,
+  "height": 670,
+  "platformSettings": {},
+  "subMetas": {
+    "Michelob ULTRA0": {
+      "ver": "1.0.4",
+      "uuid": "05780b6e-50a0-4cb7-aed2-8e808ad4cf66",
+      "rawTextureUuid": "5bf68e8c-0bfb-4d9d-a0e3-220af337972c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": 0.5,
+      "trimX": 12,
+      "trimY": 1,
+      "width": 243,
+      "height": 667,
+      "rawWidth": 270,
+      "rawHeight": 670,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

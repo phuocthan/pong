@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "7f73e44d-451e-4ba8-833e-8f6457b94218",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 270,
+  "height": 670,
+  "platformSettings": {},
+  "subMetas": {
+    "Bud Light Seltzer": {
+      "ver": "1.0.4",
+      "uuid": "1abde693-3020-45ec-be09-081d51cdf338",
+      "rawTextureUuid": "7f73e44d-451e-4ba8-833e-8f6457b94218",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": 0,
+      "trimX": 13,
+      "trimY": 8,
+      "width": 241,
+      "height": 654,
+      "rawWidth": 270,
+      "rawHeight": 670,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
