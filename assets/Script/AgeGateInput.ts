@@ -1,3 +1,5 @@
+import GameController, { SCREEN } from "./GameController";
+
 const { ccclass, property } = cc._decorator;
 export enum DATE {
     DAY,
@@ -5,7 +7,7 @@ export enum DATE {
     YEAR
 }
 @ccclass
-export default class BackgroundAdapter extends cc.Component {
+export default class AgeGateController extends cc.Component {
 
     @property( cc.EditBox )
     boxMonth: cc.EditBox = null;
@@ -70,17 +72,20 @@ export default class BackgroundAdapter extends cc.Component {
                 this.inputList[DATE.YEAR] = true;
             }
         }
-
+        cc.log(GameController.inst);
         const isAllFieldInputted = this.inputList[0] && this.inputList[1] && this.inputList[2];
         if( isAllFieldInputted ) {
             const date = this.boxMonth.string + '/' + this.boxDate.string + '/' + this.boxYear.string;
             cc.log( 'date ', date );
             const valid = this.isValidDate( date )
-            if( !valid ){
-                this.showError('PLEASE INPUT AN INVALID DATE');
+            if( !valid ) {
+                this.showError( 'PLEASE INPUT AN INVALID DATE' );
+            } else {
+                this.scheduleOnce( () => {
+                    GameController.inst.gotoScreen( SCREEN.LOGIN );
+                }, 1 );
             }
         }
-        
         return true;
     }
 

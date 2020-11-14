@@ -5,6 +5,15 @@ import { Utils } from "./Utils";
 
 const {ccclass, property} = cc._decorator;
 const DEFAULT_TIME_MATCH = 120;
+export enum SCREEN {
+    AGE_GATE,
+    GAME_PLAY,
+    GAME_OVER,
+    CAN_SELECTION,
+    LOGIN,
+    HOME_SCREEN,
+    LEADER_BOARD
+}
 @ccclass
 export default class GameController extends cc.Component {
 
@@ -64,19 +73,29 @@ export default class GameController extends cc.Component {
     }
     p1Score = 0;
     p2Score = 0;
-    
-    onLoad() {
-        GameController.inst = this;
-        // cc.director.getPhysicsManager().enabled = true;
-        // cc.director.getPhysicsManager().debugDrawFlags = cc.PhysicsManager.DrawBits.e_aabbBit |
-        // cc.PhysicsManager.DrawBits.e_pairBit |
-        // cc.PhysicsManager.DrawBits.e_centerOfMassBit |
-        // cc.PhysicsManager.DrawBits.e_jointBit |
-        // cc.PhysicsManager.DrawBits.e_shapeBit;
 
-        // cc.director.getCollisionManager().enabled = true;
-        // cc.log('Enable Physic')
-        this.gameOverContainer.active = false;
+    screenList = [];
+
+    gotoScreen(screen) {
+        this.screenList.forEach(e => {
+            e.active = false;
+        })
+        this.screenList[screen].active = true;
+    }
+
+    onLoad() {
+
+        GameController.inst = this;
+        this.screenList.push(this.ageGateScreen);
+        this.screenList.push(this.gamePlayScreen);
+        this.screenList.push(this.gameOverScreen);
+        this.screenList.push(this.canSelectionScreen);
+        this.screenList.push(this.loginRegisterScreen);
+        this.screenList.push(this.homeScreenScreen);
+        this.screenList.push(this.leaderboardScreen);
+
+        this.gotoScreen(SCREEN.LOGIN);
+        // this.gotoScreen(SCREEN.AGE_GATE);
 
         var manager = cc.director.getCollisionManager();
 
