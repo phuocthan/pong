@@ -8,6 +8,21 @@ const DEFAULT_TIME_MATCH = 120;
 @ccclass
 export default class GameController extends cc.Component {
 
+    @property(cc.Node)
+    ageGateScreen: cc.Node = null;
+    @property(cc.Node)
+    gamePlayScreen: cc.Node = null;
+    @property(cc.Node)
+    gameOverScreen: cc.Node = null;
+    @property(cc.Node)
+    canSelectionScreen: cc.Node = null;
+    @property(cc.Node)
+    loginRegisterScreen: cc.Node = null;
+    @property(cc.Node)
+    homeScreenScreen: cc.Node = null;
+    @property(cc.Node)
+    leaderboardScreen: cc.Node = null;
+
     @property(cc.Label)
     player1_Score: cc.Label = null;
     @property(cc.Label)
@@ -49,10 +64,7 @@ export default class GameController extends cc.Component {
     }
     p1Score = 0;
     p2Score = 0;
-    // @property(cc.Label)
-    // player2_Score: cc.Label = null;
-    // @property
-    // text: string = 'hello';
+    
     onLoad() {
         GameController.inst = this;
         // cc.director.getPhysicsManager().enabled = true;
@@ -184,5 +196,7 @@ export default class GameController extends cc.Component {
         const p1 = this.player1Node.getComponent(Paddle).InitBotBatch();
         const p2 = this.player2Node.getComponent(Paddle).InitBotBatch();
     }
+
+
 
 }

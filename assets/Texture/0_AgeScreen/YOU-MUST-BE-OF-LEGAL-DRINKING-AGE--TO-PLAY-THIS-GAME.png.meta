@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "691a0734-cea1-434a-a268-5227e76edf6c",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 371,
+  "height": 43,
+  "platformSettings": {},
+  "subMetas": {
+    "YOU-MUST-BE-OF-LEGAL-DRINKING-AGE--TO-PLAY-THIS-GAME": {
+      "ver": "1.0.4",
+      "uuid": "cbf9bdfa-e7c4-45e1-b2b2-853e7871cd50",
+      "rawTextureUuid": "691a0734-cea1-434a-a268-5227e76edf6c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 371,
+      "height": 43,
+      "rawWidth": 371,
+      "rawHeight": 43,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
