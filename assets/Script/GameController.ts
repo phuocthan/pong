@@ -1,10 +1,11 @@
 import Ball from "./Ball";
 import Paddle from "./Paddle";
 import TimerCountdown from "./TimerCountdown";
+import TouchPlay from "./TouchPlay";
 import { Utils } from "./Utils";
 
 const {ccclass, property} = cc._decorator;
-const DEFAULT_TIME_MATCH = 120;
+const DEFAULT_TIME_MATCH = 4;
 export enum SCREEN {
     AGE_GATE,
     GAME_PLAY,
@@ -60,6 +61,9 @@ export default class GameController extends cc.Component {
     @property(cc.SpriteFrame)
     BallSkins : cc.SpriteFrame[] = [];
 
+    @property(cc.Node)
+    clickPlayNode: cc.Node = null;
+
     isStartCountdown = false;
     _isGameOver = false;
     _isGameStart = false;
@@ -94,8 +98,8 @@ export default class GameController extends cc.Component {
         this.screenList.push(this.homeScreenScreen);
         this.screenList.push(this.leaderboardScreen);
 
-        this.gotoScreen(SCREEN.LOGIN);
-        // this.gotoScreen(SCREEN.AGE_GATE);
+        // this.gotoScreen(SCREEN.LOGIN);
+        this.gotoScreen(SCREEN.AGE_GATE);
 
         var manager = cc.director.getCollisionManager();
 
@@ -153,17 +157,25 @@ export default class GameController extends cc.Component {
         this.startCountDown()
     }
 
-    randomSkins(){
+    getSkinList(){
+        return this.PlayerSkins;
+    }
+
+    setGameSkins(skin){
         // skins for player
         const p1 = this.player1Node.getComponent(Paddle);
-        let rand = Utils.randomRange(0, this.PlayerSkins.length - 1, true);
-        p1.setSkin(this.PlayerSkins[rand]);
-        const p2 = this.player2Node.getComponent(Paddle);
-        rand = Utils.randomRange(0, this.PlayerSkins.length - 1, true);
-        p2.setSkin(this.PlayerSkins[rand]);        
+        // let rand = Utils.randomRange(0, this.PlayerSkins.length - 1, true);
+        p1.setSkin(this.PlayerSkins[skin]);
+        Ball.inst.setSkin(this.BallSkins[skin]);
 
-        rand = Utils.randomRange(0, this.BallSkins.length - 1, true);
-        Ball.inst.setSkin(this.BallSkins[rand]);
+        const p2 = this.player2Node.getComponent(Paddle);
+        let skins = [...this.PlayerSkins];
+        skins.splice(skin, 1);
+
+        let rand = Utils.randomRange(0, skins.length - 1, true);
+
+        p2.setSkin(skins[rand]);        
+
     
     }
 
@@ -177,16 +189,27 @@ export default class GameController extends cc.Component {
     }
 
     startCountDown(){
-        this.randomSkins();
+        // this.randomSkins();
         this.isStartCountdown = true;
         this.startCoundownTimer = Date.now();
         this.startGameCountdown.string = 'READY';
         this.startGameCountdown.node.active = true;
         this.touchPlay.active = false;
-        this.gameOverContainer.active = false;
+        // this.gameOverContainer.active = false;
         this.p1Score = this.p2Score = 0;
         this.updateScore();
         this.resetPlayersPos();
+    }
+
+    startGameWithClickToPlayScreen(){
+        this.p1Score = this.p2Score = 0;
+        this.timerCountdown.setMatchTimeInfo(DEFAULT_TIME_MATCH);
+        this.updateScore();
+        this.resetPlayersPos();        
+        Ball.inst.launch();
+        this.touchPlay.active = true;
+        this.touchPlay.getComponent(TouchPlay).isSkipped = false;
+        this._isGameStart = false;
     }
     update(dt){
         if(!this.isStartCountdown)  {

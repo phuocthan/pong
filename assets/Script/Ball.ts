@@ -95,7 +95,7 @@ export default class Ball extends cc.Component {
         // Anything else (in this case, just the paddles)
         if( other.tag == 0 ) {
             this.x_direction *= -1;
-            const isRandom = Utils.randomRange(0, 100, true) >= 70;
+            const isRandom = Utils.randomRange(0, 100, true) >= 50;
             if( this.firstTimeCollider || isRandom ) {
                 this.firstTimeCollider = false;
                 this.y_direction = Utils.randomRange( 0, 1, true ) === 0 ? -1 : 1;
