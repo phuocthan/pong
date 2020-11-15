@@ -44,8 +44,9 @@ export default class HomeScreenController extends cc.Component {
         GameController.inst.gotoScreen( SCREEN.LEADER_BOARD );
     }
     clickOnLogOutBtn () {
-        // GameController.inst.gotoScreen(SCREEN.LEADER_BOARD);
+        GameController.inst.gotoScreen(SCREEN.LOGIN);
     }
+    
 
 
 

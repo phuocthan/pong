@@ -21,9 +21,12 @@ export default class AgeGateController extends cc.Component {
     @property( cc.Label )
     errorLabel: cc.Label = null;
     inputList: boolean[];
+    inputDate: number[];
 
     onLoad () {
         this.inputList = [false, false, false];
+        this.inputDate = [0, 0, 0];
+        this.isEnough21Yo();
     }
 
     validate ( event, custom ) {
@@ -52,6 +55,7 @@ export default class AgeGateController extends cc.Component {
             }
             else {
                 this.inputList[DATE.MONTH] = true;
+                this.inputDate[DATE.MONTH] = num;
             }
         }
         else if( custom == 'DAY' ) {
@@ -61,6 +65,7 @@ export default class AgeGateController extends cc.Component {
             }
             else {
                 this.inputList[DATE.DAY] = true;
+                this.inputDate[DATE.DAY] = num;
             }
         }
         else if( custom == 'YEAR' ) {
@@ -70,9 +75,10 @@ export default class AgeGateController extends cc.Component {
             }
             else {
                 this.inputList[DATE.YEAR] = true;
+                this.inputDate[DATE.YEAR] = num;
             }
         }
-        cc.log(GameController.inst);
+        cc.log( GameController.inst );
         const isAllFieldInputted = this.inputList[0] && this.inputList[1] && this.inputList[2];
         if( isAllFieldInputted ) {
             const date = this.boxMonth.string + '/' + this.boxDate.string + '/' + this.boxYear.string;
@@ -81,13 +87,36 @@ export default class AgeGateController extends cc.Component {
             if( !valid ) {
                 this.showError( 'PLEASE INPUT AN INVALID DATE' );
             } else {
-                this.scheduleOnce( () => {
-                    GameController.inst.gotoScreen( SCREEN.LOGIN );
-                }, 1 );
+                if( this.isEnough21Yo() ) {
+                    this.scheduleOnce( () => {
+                        GameController.inst.gotoScreen( SCREEN.LOGIN );
+                    }, 1 );
+                } else {
+                    this.showError( 'YOU NOT REACH 21 AGE TO PLAY THIS GAME' );
+                }
             }
+
         }
         return true;
     }
+
+    isEnough21Yo () {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear() - 21;
+        const month = currentDate.getMonth() + 1;
+        const day = currentDate.getDate();
+        cc.log('year ',year);
+        cc.log('month ',month);
+        cc.log('day ',day);
+        const currentWeight = year * 10000 + month * 100 + day;
+        const inputWeight = this.inputDate[DATE.YEAR] * 10000 + this.inputDate[DATE.MONTH] * 100 + this.inputDate[DATE.DAY];
+        if( currentWeight >= inputWeight ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     showError ( text ) {
         this.errorLabel.string = text;
