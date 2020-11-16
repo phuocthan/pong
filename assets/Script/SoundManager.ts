@@ -16,7 +16,7 @@ export enum AudioClips {
     RoofFloor_sfx,
     bg_music,
 }
-const ENGINE_CHANNEL = 3;
+const ENGINE_CHANNEL = 10;
 export enum SOUND_INDEX {
     CHANNEL,
     VOLUME,
@@ -181,7 +181,7 @@ export default class SoundManager extends cc.Component {
     {
         let c = this.SOUND_INFO[clip*(SOUND_INDEX.LENGTH) + SOUND_INDEX.CHANNEL];
         let v = this.SOUND_INFO[clip*(SOUND_INDEX.LENGTH) + SOUND_INDEX.VOLUME];
-        if(clip == AudioClips.ticket_sfx){
+        if(clip == AudioClips.RoofFloor_sfx){
             c = this.getFreeChannel();
         }
         // console.log('Play sound ',this.enumToString(AudioClips,clip) +' at chanel: ',c);

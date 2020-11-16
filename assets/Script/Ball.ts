@@ -16,6 +16,7 @@ export default class Ball extends cc.Component {
 
     private static _inst: Ball = null;
     firstTimeCollider = true;
+    roofId = -1;
     public static get inst (): Ball {
         return Ball._inst;
     }
