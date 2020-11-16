@@ -4644,14 +4644,14 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 1,
+      "x": 0,
       "y": 0.5
     },
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        76.859,
+        36.859,
         314.333,
         0,
         0,
@@ -4838,14 +4838,14 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 1,
       "y": 0.5
     },
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -63.359,
+        -23.359,
         314.333,
         0,
         0,
@@ -7352,7 +7352,7 @@
         "__id__": 201
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 205
