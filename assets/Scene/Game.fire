@@ -195,7 +195,7 @@
       "array": [
         0,
         0,
-        518.7492168668788,
+        527.4094709047232,
         0,
         0,
         0,
@@ -3582,7 +3582,7 @@
         "__id__": 129
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": null,
     "_opacity": 255,
@@ -4340,8 +4340,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        333.334,
-        318.922,
+        -329.538,
+        326.922,
         0,
         0,
         0,
@@ -4557,7 +4557,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -20,
+        76.859,
         314.333,
         0,
         0,
@@ -4625,7 +4625,7 @@
       "__id__": 96
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 106
@@ -4751,7 +4751,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        20,
+        -63.359,
         314.333,
         0,
         0,
@@ -4864,7 +4864,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -372.582,
+        373.861,
         0,
         0,
         0,
@@ -4897,7 +4897,7 @@
       "__id__": 109
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_opacity": 255,
@@ -4922,7 +4922,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        230,
+        -236.296,
         0,
         0,
         0,
@@ -4984,7 +4984,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        230,
+        -236.296,
         0,
         0,
         0,
@@ -5084,12 +5084,12 @@
     "tag": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 103.6,
-      "y": -0.6
+      "x": -102,
+      "y": -1
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 34.7,
+      "width": 34,
       "height": 661
     },
     "_id": "f3F3nxTXBH9ZIBuag5A1bJ"
@@ -5105,12 +5105,12 @@
     "tag": 1,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": -23.7,
-      "y": -0.6
+      "x": 32,
+      "y": -1
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 192.1,
+      "width": 174,
       "height": 661
     },
     "_id": "bbdBUpr0JCxoXHwC7dUtYp"
@@ -5179,7 +5179,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        373.861,
+        -373.861,
         0,
         0,
         0,
@@ -5212,7 +5212,7 @@
       "__id__": 117
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_opacity": 255,
@@ -5237,7 +5237,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -230,
+        227.153,
         0,
         0,
         0,
@@ -5299,7 +5299,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -230,
+        227.153,
         0,
         0,
         0,
@@ -5410,13 +5410,13 @@
     "tag": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": -110,
-      "y": 0.8
+      "x": 100,
+      "y": 1
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 13.9,
-      "height": 653.1
+      "width": 41,
+      "height": 653
     },
     "_id": "64x9xX5dxP9rgdcY0qw0pE"
   },
@@ -5431,13 +5431,13 @@
     "tag": 1,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 15.6,
+      "x": -32,
       "y": 0
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 210.3,
-      "height": 654.8
+      "width": 169,
+      "height": 655
     },
     "_id": "0fadpfC1VGB66lVDuS/fGc"
   },
@@ -6287,7 +6287,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 283.36,
+      "width": 263.83,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -6436,8 +6436,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "Best Score:",
-    "_N$string": "Best Score:",
+    "_string": "High Score:",
+    "_N$string": "High Score:",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -7258,7 +7258,7 @@
         "__id__": 199
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 201

@@ -78,7 +78,7 @@ export default class Ball extends cc.Component {
         // Left or right wall
         if( other.tag === 2 || other.tag === 3 ) {
             this.x_direction *= -1;
-            const isAddScoreForPlayer1 = other.tag === 3;
+            const isAddScoreForPlayer1 = !(other.tag === 3);
             GameController.inst.setScore( isAddScoreForPlayer1 );
             this.node.opacity = 0;
             this.reLaunchBall( !isAddScoreForPlayer1 );
@@ -115,7 +115,7 @@ export default class Ball extends cc.Component {
             GameController.inst.resetPlayersPos();
             const ballSpawnPos = GameController.inst.getBallSpawnPosition( isFromPlayer1 );
             Utils.setWorldPos( this.node, ballSpawnPos );
-            this.x_direction = isFromPlayer1 ? 1 : -1;
+            this.x_direction = isFromPlayer1 ? -1 : 1;
             this.y_direction = 0;
             this.firstTimeCollider = true;
             GameController.inst.onBallLaunch();

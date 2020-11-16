@@ -113,10 +113,10 @@ export default class Paddle extends cc.Component {
     updateBot () {
         const size = cc.view.getVisibleSize();
         const ballPos = Ball.inst.getWPos();
-        if( ballPos.x < size.width / 2 ) {
+        if( ballPos.x > size.width / 2 ) {
             this.findDirectionForBOT( size.height / 2, false );
         } else {
-            if( Ball.inst.isBallMovingLeft() )
+            if( !Ball.inst.isBallMovingLeft() )
                 this.findDirectionForBOT( ballPos.y, true );
             else {
                 this.moveDirectionY = 0;
