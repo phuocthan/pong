@@ -1,4 +1,5 @@
 import GameController, { SCREEN } from "./GameController";
+import SoundManager, { AudioClips } from "./SoundManager";
 
 const { ccclass, property } = cc._decorator;
 export enum DATE {
@@ -34,14 +35,17 @@ export default class LoginController extends cc.Component {
         this.signUpNode.active = !isLogin;
     }
     clickOnLoginBtn() {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         GameController.inst.gotoScreen(SCREEN.HOME_SCREEN);
     }
     clickOnSignUpHereBtn() {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         this.gotoScreen(false);
         // GameController.inst.gotoScreen(SCREEN.HOME_SCREEN);
     }
 
     clickOnSignUpBtn() {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         this.gotoScreen(true);
         // GameController.inst.gotoScreen(SCREEN.HOME_SCREEN);
     }

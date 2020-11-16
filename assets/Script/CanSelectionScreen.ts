@@ -1,4 +1,5 @@
 import GameController, { SCREEN } from "./GameController";
+import SoundManager, { AudioClips } from "./SoundManager";
 
 const { ccclass, property } = cc._decorator;
 export enum DATE {
@@ -28,6 +29,7 @@ export default class CanSelectionScreen extends cc.Component {
 
     }
     clickOnNextBtn () {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         this.currentSelectSkin++;
         if (this.currentSelectSkin == this.skinList.length) {
             this.currentSelectSkin = 0;
@@ -35,6 +37,7 @@ export default class CanSelectionScreen extends cc.Component {
         this.selectedSkin =  this.currentSelectSkin;
     }
     clickOnPrevBtn () {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         this.currentSelectSkin--;
         if (this.currentSelectSkin < 0) {
             this.currentSelectSkin = this.skinList.length - 1;
@@ -42,6 +45,7 @@ export default class CanSelectionScreen extends cc.Component {
         this.selectedSkin =  this.currentSelectSkin;        
     }
     clickOnChoosePlayerBtn () {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         GameController.inst.gotoScreen( SCREEN.GAME_PLAY );
         GameController.inst.setGameSkins(this.currentSelectSkin);
         GameController.inst.startGameWithClickToPlayScreen();

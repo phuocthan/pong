@@ -1,5 +1,6 @@
 import GameController from "./GameController";
 import GameControll from "./GameController";
+import SoundManager, { AudioClips } from "./SoundManager";
 import { Utils } from "./Utils";
 
 const { ccclass, property } = cc._decorator;
@@ -80,6 +81,7 @@ export default class Ball extends cc.Component {
             this.x_direction *= -1;
             const isAddScoreForPlayer1 = !(other.tag === 3);
             GameController.inst.setScore( isAddScoreForPlayer1 );
+            isAddScoreForPlayer1 ? SoundManager.inst.playSFX(AudioClips.Player_Score_sfx) :  SoundManager.inst.playSFX(AudioClips.AI_Score_sfx);
             this.node.opacity = 0;
             this.reLaunchBall( !isAddScoreForPlayer1 );
             return;
@@ -91,9 +93,11 @@ export default class Ball extends cc.Component {
         // Top or bottom wall
         if( other.tag == 1 ) {
             this.y_direction *= -1;
+            SoundManager.inst.playSFX(AudioClips.RoofFloor_sfx)
         }
         // Anything else (in this case, just the paddles)
         if( other.tag == 0 ) {
+            SoundManager.inst.playSFX(AudioClips.PaddleHit_sfx)
             this.x_direction *= -1;
             const isRandom = Utils.randomRange(0, 100, true) >= 50;
             if( this.firstTimeCollider || isRandom ) {

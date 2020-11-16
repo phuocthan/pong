@@ -1,4 +1,5 @@
 import GameController, { SCREEN } from "./GameController";
+import SoundManager, { AudioClips } from "./SoundManager";
 
 const { ccclass, property } = cc._decorator;
 @ccclass
@@ -29,6 +30,7 @@ export default class LeaderBoardScreen extends cc.Component {
     //     this.signUpNode.active = !isLogin;
     // }
     clickOnHomeScreenBtn () {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         GameController.inst.gotoScreen( SCREEN.HOME_SCREEN );
         // GameController.inst.startGameWithClickToPlayScreen();
     }

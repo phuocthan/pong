@@ -1,4 +1,5 @@
 import GameController, { SCREEN } from "./GameController";
+import SoundManager, { AudioClips } from "./SoundManager";
 
 const { ccclass, property } = cc._decorator;
 export enum DATE {
@@ -38,12 +39,15 @@ export default class HomeScreenController extends cc.Component {
         this.highScore.string = '' + score;
     }
     clickOnPlayBtn () {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         GameController.inst.gotoScreen( SCREEN.CAN_SELECTION );
     }
     clickOnLeaderBoardBtn () {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         GameController.inst.gotoScreen( SCREEN.LEADER_BOARD );
     }
     clickOnLogOutBtn () {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         GameController.inst.gotoScreen(SCREEN.LOGIN);
     }
     

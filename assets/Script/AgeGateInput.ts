@@ -1,4 +1,5 @@
 import GameController, { SCREEN } from "./GameController";
+import SoundManager from "./SoundManager";
 
 const { ccclass, property } = cc._decorator;
 export enum DATE {
@@ -27,6 +28,7 @@ export default class AgeGateController extends cc.Component {
         this.inputList = [false, false, false];
         this.inputDate = [0, 0, 0];
         this.isEnough21Yo();
+        SoundManager.inst.playGameMusic();
     }
 
     validate ( event, custom ) {

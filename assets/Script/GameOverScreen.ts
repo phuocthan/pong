@@ -1,4 +1,5 @@
 import GameController, { SCREEN } from "./GameController";
+import SoundManager, { AudioClips } from "./SoundManager";
 
 const { ccclass, property } = cc._decorator;
 @ccclass
@@ -29,10 +30,12 @@ export default class GameOverController extends cc.Component {
     //     this.signUpNode.active = !isLogin;
     // }
     clickOnReplayBtn () {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         GameController.inst.gotoScreen( SCREEN.GAME_PLAY );
         GameController.inst.startGameWithClickToPlayScreen();
     }
     clickOnLeaderBoardBtn () {
+        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         GameController.inst.gotoScreen( SCREEN.LEADER_BOARD );
     }
 
