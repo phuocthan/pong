@@ -1,11 +1,12 @@
 import Ball from "./Ball";
+import GameAPI from "./GameAPI";
 import Paddle from "./Paddle";
 import TimerCountdown from "./TimerCountdown";
 import TouchPlay from "./TouchPlay";
 import { Utils } from "./Utils";
 
 const {ccclass, property} = cc._decorator;
-const DEFAULT_TIME_MATCH = 120;
+const DEFAULT_TIME_MATCH = 30;
 export enum SCREEN {
     AGE_GATE,
     GAME_PLAY,
@@ -54,6 +55,8 @@ export default class GameController extends cc.Component {
     touchPlay : cc.Node = null;
     @property(cc.Label)
     yourScore: cc.Label = null;
+    @property(cc.Label)
+    highScoreGameOver: cc.Label = null;
 
     @property(cc.SpriteFrame)
     PlayerSkins : cc.SpriteFrame[] = [];
@@ -65,6 +68,8 @@ export default class GameController extends cc.Component {
     clickPlayNode: cc.Node = null;
     @property(cc.Label)
     highScoreLbl: cc.Label = null;
+
+    leaderBoardContent = [];
 
     birthDate = '';
     isStartCountdown = false;
@@ -82,6 +87,7 @@ export default class GameController extends cc.Component {
     p2Score = 0;
 
     highScore = 0;
+    playerScore = 0;
     screenList = [];
 
     gotoScreen(screen) {
@@ -141,6 +147,16 @@ export default class GameController extends cc.Component {
         Ball.inst.hideBall();
         this.yourScore.string = this.p1Score.toString();
         this.gameOverContainer.active = true;
+        
+    }
+    gameOverNotice(){
+        this.playerScore = this.p1Score;
+        if(this.playerScore > this.highScore) {
+            this.updateHighScore(this.playerScore);
+        }
+        this.yourScore.string = '' + this.playerScore;
+        this.highScoreGameOver.string = '' + this.highScore;
+        GameAPI.inst.updateYourScore();
     }
     isGameOver() {
         return this._isGameOver;
@@ -203,7 +219,7 @@ export default class GameController extends cc.Component {
         this.startGameCountdown.node.active = true;
         this.touchPlay.active = false;
         // this.gameOverContainer.active = false;
-        this.p1Score = this.p2Score = 0;
+        this.playerScore = this.p1Score = this.p2Score = 0;
         this.updateScore();
         this.resetPlayersPos();
     }

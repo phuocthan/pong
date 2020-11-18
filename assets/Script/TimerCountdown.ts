@@ -58,7 +58,7 @@ export default class TimerCountdown extends cc.Component {
             this.updateTimerLabel(this.matchTime);
             this.lastTimeUpdate = Date.now();
             if( this.matchTime == 0 ) {
-                // GameController.inst.gameOver();
+                GameController.inst.gameOverNotice();
                 GameController.inst.gotoScreen(SCREEN.GAME_OVER);
                 this.isStopped = true;
                 return;

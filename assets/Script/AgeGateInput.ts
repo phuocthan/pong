@@ -95,7 +95,7 @@ export default class AgeGateController extends cc.Component {
                         GameController.inst.gotoScreen( SCREEN.LOGIN );
                     }, 1 );
                 } else {
-                    this.showError( 'YOU NOT REACH 21 AGE TO PLAY THIS GAME' );
+                    this.showError( 'YOU NOT REACH 22 AGE TO PLAY THIS GAME' );
                 }
             }
 
