@@ -1,3 +1,4 @@
+import GameAPI from "./GameAPI";
 import GameController, { SCREEN } from "./GameController";
 import SoundManager, { AudioClips } from "./SoundManager";
 
@@ -19,37 +20,87 @@ export default class LoginController extends cc.Component {
     @property( cc.Label )
     errorLabel: cc.Label = null;
 
-    @property (cc.Node)
+    @property( cc.Node )
     signInNode: cc.Node = null;
 
-    @property (cc.Node)
+    @property( cc.Node )
     signUpNode: cc.Node = null;
     // inputList: boolean[];
 
+    @property( cc.EditBox )
+    inputUserName: cc.EditBox = null;
+
+    @property( cc.EditBox )
+    inputEmail: cc.EditBox = null;
+
+    @property( cc.EditBox )
+    inputPassword: cc.EditBox = null;
+
+    @property( cc.EditBox )
+    inputCPassword: cc.EditBox = null;
+
+    @property( cc.EditBox )
+    loginEmail: cc.EditBox = null;
+
+    @property( cc.EditBox )
+    loginPassword: cc.EditBox = null;
+
+    @property( cc.Label )
+    logUpError: cc.Label = null;
+    public static inst : LoginController = null;
+    curToken = null;
+    public static getInstance(): LoginController {
+        if (!LoginController.inst) {
+            LoginController.inst = new LoginController();
+        }
+        return LoginController.inst;
+    };   
     onLoad () {
         // this.inputList = [false, false, false];
-        this.gotoScreen(true);
+        this.gotoScreen( true );
+        LoginController.inst = this;
     }
-    gotoScreen(isLogin){
+    gotoScreen ( isLogin ) {
         this.signInNode.active = isLogin;
         this.signUpNode.active = !isLogin;
     }
-    clickOnLoginBtn() {
-        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
-        GameController.inst.gotoScreen(SCREEN.HOME_SCREEN);
+    clickOnLoginBtn () {
+        SoundManager.inst.playSFX( AudioClips.BtnClick_sfx );
+        // GameController.inst.gotoScreen( SCREEN.HOME_SCREEN );
+        const params = {
+            "email": this.loginEmail.string,
+            "password": this.loginPassword.string,
+        };
+        cc.log( 'login info ', params );
+        GameAPI.getInstance().login(params);
     }
-    clickOnSignUpHereBtn() {
-        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
-        this.gotoScreen(false);
+    clickOnSignUpHereBtn () {
+        SoundManager.inst.playSFX( AudioClips.BtnClick_sfx );
+        this.gotoScreen( false );
         // GameController.inst.gotoScreen(SCREEN.HOME_SCREEN);
     }
 
-    clickOnSignUpBtn() {
-        SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
-        this.gotoScreen(true);
+    clickOnSignUpBtn () {
+        SoundManager.inst.playSFX( AudioClips.BtnClick_sfx );
+        // this.gotoScreen(true);
+        const params = {
+            "email": this.inputEmail.string,
+            "password": this.inputPassword.string,
+            "confirmPassword": this.inputCPassword.string,
+            "username": this.inputUserName.string,
+            "birthday": GameController.inst.birthDate,
+        };
+        cc.log( 'sign up info ', params );
+        GameAPI.getInstance().register(params);
+
+
         // GameController.inst.gotoScreen(SCREEN.HOME_SCREEN);
     }
 
+    showAPIError (text){
+        this.logUpError.enabled = true;
+        this.logUpError.string = text;
+    }
     validate ( event, custom ) {
         cc.log( 'custom ', custom );
         let str: string;

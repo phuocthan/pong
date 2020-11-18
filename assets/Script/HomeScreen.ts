@@ -1,3 +1,4 @@
+import GameAPI from "./GameAPI";
 import GameController, { SCREEN } from "./GameController";
 import SoundManager, { AudioClips } from "./SoundManager";
 
@@ -44,7 +45,8 @@ export default class HomeScreenController extends cc.Component {
     }
     clickOnLeaderBoardBtn () {
         SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
-        GameController.inst.gotoScreen( SCREEN.LEADER_BOARD );
+        GameAPI.getInstance().getLeaderBoards();
+        // GameController.inst.gotoScreen( SCREEN.LEADER_BOARD );
     }
     clickOnLogOutBtn () {
         SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);

@@ -63,7 +63,10 @@ export default class GameController extends cc.Component {
 
     @property(cc.Node)
     clickPlayNode: cc.Node = null;
+    @property(cc.Label)
+    highScoreLbl: cc.Label = null;
 
+    birthDate = '';
     isStartCountdown = false;
     _isGameOver = false;
     _isGameStart = false;
@@ -78,6 +81,7 @@ export default class GameController extends cc.Component {
     p1Score = 0;
     p2Score = 0;
 
+    highScore = 0;
     screenList = [];
 
     gotoScreen(screen) {
@@ -86,7 +90,10 @@ export default class GameController extends cc.Component {
         })
         this.screenList[screen].active = true;
     }
-
+    updateHighScore(score){
+        this.highScore = score;
+        this.highScoreLbl.string = '' + score;
+    }
     onLoad() {
 
         GameController.inst = this;

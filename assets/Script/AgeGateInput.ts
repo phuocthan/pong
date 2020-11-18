@@ -84,6 +84,7 @@ export default class AgeGateController extends cc.Component {
         const isAllFieldInputted = this.inputList[0] && this.inputList[1] && this.inputList[2];
         if( isAllFieldInputted ) {
             const date = this.boxMonth.string + '/' + this.boxDate.string + '/' + this.boxYear.string;
+            GameController.inst.birthDate = date;
             cc.log( 'date ', date );
             const valid = this.isValidDate( date )
             if( !valid ) {
@@ -104,7 +105,7 @@ export default class AgeGateController extends cc.Component {
 
     isEnough21Yo () {
         const currentDate = new Date();
-        const year = currentDate.getFullYear() - 21;
+        const year = currentDate.getFullYear() - 22;
         const month = currentDate.getMonth() + 1;
         const day = currentDate.getDate();
         cc.log('year ',year);
