@@ -24,7 +24,7 @@ export default class Paddle extends cc.Component {
     start () {
         // init logic
         this.rgBody = this.node.getComponent( cc.RigidBody );
-        cc.log( 'this.rgBody ', this.rgBody );
+        // cc.log( 'this.rgBody ', this.rgBody );
         if( this.isPlayer ) {
             cc.systemEvent.on( cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this );
             cc.systemEvent.on( cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this );
@@ -32,10 +32,10 @@ export default class Paddle extends cc.Component {
             this.node.on( cc.Node.EventType.TOUCH_MOVE, function( event ) {
                 let touchEndPos = event.getLocation();
                 _t.updatePaddleToPoint( touchEndPos.y )
-                cc.log( 'TouchMove ', touchEndPos );
+                // cc.log( 'TouchMove ', touchEndPos );
             } );
             this.node.on( cc.Node.EventType.TOUCH_END, function( event ) {
-                cc.log( 'TOUCH_END ' );
+                // cc.log( 'TOUCH_END ' );
                 _t.moveDirectionY = 0;
             } );
         }
@@ -128,7 +128,6 @@ export default class Paddle extends cc.Component {
         if( GameController.inst.isGameOver() || !GameController.inst.isGameStart() ) {
             return;
         }
-        cc.log( 'updateeeeee ' );
         if( !this.isPlayer ) {
             this.updateBot();
         }

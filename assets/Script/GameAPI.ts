@@ -105,7 +105,7 @@ export default class GameAPI{
         }).then(() => {
             callback();
         }).catch(()=>{
-           LoginController.getInstance().showAPIError(this.infoMessage) // cc.log('Error when get OTP');
+           LoginController.getInstance().showAPIError(false, this.infoMessage) // cc.log('Error when get OTP');
         });
     }
 
@@ -159,7 +159,7 @@ export default class GameAPI{
         }).then(() => {
             callback();
         }).catch(()=>{
-        //    LoginController.getInstance().showAPIError(this.infoMessage) // cc.log('Error when get OTP');
+           LoginController.getInstance().showAPIError(true, this.infoMessage) // cc.log('Error when get OTP');
         });
     }
 

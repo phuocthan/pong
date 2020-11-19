@@ -18,7 +18,12 @@ export default class LoginController extends cc.Component {
     boxPassword: cc.EditBox = null;
 
     @property( cc.Label )
-    errorLabel: cc.Label = null;
+    errorLoginLabel: cc.Label = null;
+    @property( cc.Label )
+    errorLoguplabel: cc.Label = null;
+
+    @property( cc.Label )
+    successLabel: cc.Label = null;
 
     @property( cc.Node )
     signInNode: cc.Node = null;
@@ -57,6 +62,7 @@ export default class LoginController extends cc.Component {
     };   
     onLoad () {
         // this.inputList = [false, false, false];
+        this.hideAPIError();
         this.gotoScreen( true );
         LoginController.inst = this;
     }
@@ -65,6 +71,7 @@ export default class LoginController extends cc.Component {
         this.signUpNode.active = !isLogin;
     }
     clickOnLoginBtn () {
+        this.hideAPIError();
         SoundManager.inst.playSFX( AudioClips.BtnClick_sfx );
         // GameController.inst.gotoScreen( SCREEN.HOME_SCREEN );
         const params = {
@@ -75,12 +82,14 @@ export default class LoginController extends cc.Component {
         GameAPI.getInstance().login(params);
     }
     clickOnSignUpHereBtn () {
+        this.hideAPIError();
         SoundManager.inst.playSFX( AudioClips.BtnClick_sfx );
         this.gotoScreen( false );
         // GameController.inst.gotoScreen(SCREEN.HOME_SCREEN);
     }
 
     clickOnSignUpBtn () {
+        this.hideAPIError();
         SoundManager.inst.playSFX( AudioClips.BtnClick_sfx );
         // this.gotoScreen(true);
         const params = {
@@ -96,10 +105,45 @@ export default class LoginController extends cc.Component {
 
         // GameController.inst.gotoScreen(SCREEN.HOME_SCREEN);
     }
+    
+    hideAPIError (){
+        this.errorLoginLabel.enabled = false;
+        this.errorLoginLabel.string = '';
+        this.errorLoguplabel.enabled = false;
+        this.errorLoguplabel.string = '';            
+    }
 
-    showAPIError (text){
-        this.logUpError.enabled = true;
-        this.logUpError.string = text;
+    showAPIError (islogin ,text: string){
+        let newTxt = '';
+        if (text.indexOf('empty') != -1) {
+            newTxt = 'Please input missing fields';
+        }
+        else if (text.indexOf('incorrect') != -1) {
+            newTxt = 'Email or password incorrect';
+        }
+        else if (text.indexOf('6 characters') != -1) {
+            newTxt = 'Password must be at least 6 characters';
+        }
+        else if (text.indexOf('must be [ref:password]') != -1) {
+            newTxt = 'Password doesn\'t match';
+        }
+        else if (text.indexOf('already taken') != -1 && text.indexOf('Email') != -1) {
+            newTxt = 'This email is already in use';
+        }
+        else if (text.indexOf('already taken') != -1 && text.indexOf('Username ') != -1) {
+            newTxt = 'This username is already used';
+        }
+        else {
+            newTxt = text;
+        }
+        if(islogin){
+            this.errorLoginLabel.enabled = true;
+            this.errorLoginLabel.string = newTxt;
+        }
+        else{
+            this.errorLoguplabel.enabled = true;
+            this.errorLoguplabel.string = newTxt;            
+        }
     }
     validate ( event, custom ) {
         cc.log( 'custom ', custom );
@@ -127,14 +171,14 @@ export default class LoginController extends cc.Component {
         return true;
     }
 
-    showError ( text ) {
-        this.errorLabel.string = text;
-        this.errorLabel.enabled = true;
-    }
-    hideError () {
-        this.errorLabel.string = '';
-        this.errorLabel.enabled = false;
-    }
+    // showError ( text ) {
+    //     this.errorLabel.string = text;
+    //     this.errorLabel.enabled = true;
+    // }
+    // hideError () {
+    //     this.errorLabel.string = '';
+    //     this.errorLabel.enabled = false;
+    // }
 
     // isValidDate ( s ) {
     //     // Assumes s is "mm/dd/yyyy"

@@ -92,8 +92,8 @@ export default class Ball extends cc.Component {
             this.speed = this.maxSpeed;
         }
         // Top or bottom wall
-        if( other.tag == 1 ) {
-            this.y_direction *= -1;
+        if( other.tag == 5 ||  other.tag == 6) {
+            this.y_direction = other.tag == 5 ? -1 : 1;
             SoundManager.inst.playSFX(AudioClips.RoofFloor_sfx)
         }
         // Anything else (in this case, just the paddles)
