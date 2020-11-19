@@ -113,8 +113,8 @@ export default class GameController extends cc.Component {
         this.screenList.push(this.homeScreenScreen);
         this.screenList.push(this.leaderboardScreen);
 
-        this.gotoScreen(SCREEN.LOGIN);
-        // this.gotoScreen(SCREEN.AGE_GATE);
+        // this.gotoScreen(SCREEN.LOGIN);
+        this.gotoScreen(SCREEN.AGE_GATE);
 
         var manager = cc.director.getCollisionManager();
 
