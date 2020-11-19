@@ -38,7 +38,6 @@ export default class GameOverController extends cc.Component {
     clickOnLeaderBoardBtn () {
         SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
         GameAPI.getInstance().getLeaderBoards();
-        // GameController.inst.gotoScreen( SCREEN.LEADER_BOARD );
     }
 
 

@@ -1,4 +1,5 @@
 import GameController, { SCREEN } from "./GameController";
+import LeaderBoardScreen from "./LeaderBoardScreen";
 import LoginController from "./LoginScreen";
 
 const {ccclass, property} = cc._decorator;
@@ -178,6 +179,7 @@ export default class GameAPI{
                 cc.log('GetTicket Error: ',this.infoMessage);
             }
             GameController.inst.gotoScreen( SCREEN.LEADER_BOARD );
+            LeaderBoardScreen.inst.updateLeaderBoard();
         }
         const authToken = this.authTokenList[0];
         let t = this;

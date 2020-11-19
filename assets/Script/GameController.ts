@@ -1,5 +1,6 @@
 import Ball from "./Ball";
 import GameAPI from "./GameAPI";
+import LeaderBoardScreen from "./LeaderBoardScreen";
 import Paddle from "./Paddle";
 import TimerCountdown from "./TimerCountdown";
 import TouchPlay from "./TouchPlay";
@@ -99,6 +100,7 @@ export default class GameController extends cc.Component {
     updateHighScore(score){
         this.highScore = score;
         this.highScoreLbl.string = '' + score;
+        // LeaderBoardScreen.inst.updateLeaderBoard();
     }
     onLoad() {
 
