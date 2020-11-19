@@ -131,6 +131,7 @@ export default class GameAPI{
                 // GameController.inst.showInfo(this.infoMessage);
             }
             GameController.inst.gotoScreen( SCREEN.HOME_SCREEN );
+            this.getLeaderBoards();
             
         }        
         new Promise((resolve, reject) => {
@@ -178,7 +179,7 @@ export default class GameAPI{
                 // GameController.inst.gotoGenerateTicketScreen();
                 cc.log('GetTicket Error: ',this.infoMessage);
             }
-            GameController.inst.gotoScreen( SCREEN.LEADER_BOARD );
+            // GameController.inst.gotoScreen( SCREEN.LEADER_BOARD );
             LeaderBoardScreen.inst.updateLeaderBoard();
         }
         const authToken = this.authTokenList[0];
@@ -234,6 +235,7 @@ export default class GameAPI{
                 // GameController.inst.gotoGenerateTicketScreen();
                 cc.log('GetTicket Error: ',this.infoMessage);
             }
+            this.getLeaderBoards();
         }
         const authToken = this.authTokenList[0];
         let t = this;
