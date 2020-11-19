@@ -95,8 +95,6 @@ export default class Paddle extends cc.Component {
     }
 
     findDirectionForBOT ( posY, canMiss ) {
-          this.moveDirectionY = 0;
-            return ;
         if( canMiss ) {
             // const willMiss = Ball.inst.RandomRange( 0, 1, true ) === 0;
             // if( willMiss ) {
