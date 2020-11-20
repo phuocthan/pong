@@ -1,5 +1,6 @@
 import GameController from "./GameController";
 import GameControll from "./GameController";
+import Paddle from "./Paddle";
 import SoundManager, { AudioClips } from "./SoundManager";
 import { Utils } from "./Utils";
 
@@ -17,6 +18,7 @@ export default class Ball extends cc.Component {
     private static _inst: Ball = null;
     firstTimeCollider = true;
     roofId = -1;
+    isBallIdle: boolean = false;
     public static get inst (): Ball {
         return Ball._inst;
     }
@@ -66,7 +68,7 @@ export default class Ball extends cc.Component {
         return wPos;
     }
     update ( dt ) {
-        if( GameController.inst.isGameOver() || !GameController.inst.isGameStart() ) {
+        if(this.isBallIdle || GameController.inst.isGameOver() || !GameController.inst.isGameStart() ) {
             return;
         }
         this.node.x += dt * this.speed * this.x_direction;
@@ -79,12 +81,13 @@ export default class Ball extends cc.Component {
     onCollisionEnter ( other, self ) {
         // Left or right wall
         if( other.tag === 2 || other.tag === 3 ) {
-            this.x_direction *= -1;
+            // this.x_direction *= -1;
             const isAddScoreForPlayer1 = !(other.tag === 3);
             GameController.inst.setScore( isAddScoreForPlayer1 );
             isAddScoreForPlayer1 ? SoundManager.inst.playSFX(AudioClips.Player_Score_sfx) :  SoundManager.inst.playSFX(AudioClips.AI_Score_sfx);
             this.node.opacity = 0;
             this.reLaunchBall( !isAddScoreForPlayer1 );
+            this.isBallIdle = true;
             return;
         }
         this.speed += 20;
@@ -98,8 +101,9 @@ export default class Ball extends cc.Component {
         }
         // Anything else (in this case, just the paddles)
         if( other.tag == 0 ) {
-            SoundManager.inst.playSFX(AudioClips.PaddleHit_sfx)
-            this.x_direction *= -1;
+            SoundManager.inst.playSFX(AudioClips.PaddleHit_sfx);
+            const isPlayer = other.node.getComponent(Paddle).isPlayer;
+            this.x_direction = isPlayer ? -1 : 1;
             const isRandom = Utils.randomRange(0, 100, true) >= 50;
             if( this.firstTimeCollider || isRandom ) {
                 this.firstTimeCollider = false;
@@ -114,6 +118,7 @@ export default class Ball extends cc.Component {
     }
 
     reLaunchBall ( isFromPlayer1 ) {
+        // this.isBallIdle = true;
         this.scheduleOnce( () => {
             this.node.opacity = 255;
             this.speed = this.defaultSpeed;
@@ -124,6 +129,7 @@ export default class Ball extends cc.Component {
             this.y_direction = 0;
             this.firstTimeCollider = true;
             GameController.inst.onBallLaunch();
+            this.isBallIdle = false;
         }, 0.2 );
     }
 
