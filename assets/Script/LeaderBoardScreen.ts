@@ -17,8 +17,14 @@ export default class LeaderBoardScreen extends cc.Component {
         lb.sort((a, b) => b.highScore - a.highScore);
         this.topTen.forEach((e, i) => {
             e.getChildByName('rank').getComponent(cc.Label).string = (i+1) +'.';
-            e.getChildByName('name').getComponent(cc.Label).string = lb[i].username;
-            e.getChildByName('Score').getComponent(cc.Label).string = lb[i].highScore;
+            if(lb[i]) {
+                e.active = true;
+                e.getChildByName('name').getComponent(cc.Label).string = lb[i].username;
+                e.getChildByName('Score').getComponent(cc.Label).string = lb[i].highScore || 0;
+            }
+            else{
+                e.active = false;
+            }
         })        
     }
 
