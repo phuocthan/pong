@@ -26,8 +26,27 @@ export default class HomeScreenController extends cc.Component {
 
     @property( cc.Node )
     signUpNode: cc.Node = null;
-    // inputList: boolean[];
 
+    @property( cc.Node )
+    soundSprite: cc.Node = null;
+
+    @property( cc.Sprite )
+    soundBtnSprite: cc.Sprite = null;
+
+    @property( cc.SpriteFrame )
+    soundSpriteFrame: cc.SpriteFrame[] = [];
+    isTurnedOnSound = true;
+    // inputList: boolean[];
+    clickOnSoundButton() {
+        this.isTurnedOnSound = !this.isTurnedOnSound;
+        this.soundBtnSprite.spriteFrame = this.isTurnedOnSound ? this.soundSpriteFrame[0] : this.soundSpriteFrame[1];
+        // if(this.isTurnedOnSound) {
+        //     this.soundSpriteFrame[0];
+
+            
+        // }
+        SoundManager.inst.enabledSound(this.isTurnedOnSound);
+    }
     onLoad () {
         // this.inputList = [false, false, false];
         // this.gotoScreen(true);

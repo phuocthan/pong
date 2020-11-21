@@ -69,6 +69,7 @@ export default class GameAPI{
             "confirmPassword" : params.confirmPassword,
             "username" : params.username,
             "birthday" : params.birthday,
+            "zip" : params.zip
         };
         const authToken = null;
         let t = this;

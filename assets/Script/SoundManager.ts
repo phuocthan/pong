@@ -76,6 +76,17 @@ export default class SoundManager extends cc.Component {
 
 
     }
+
+    enabledSound(enable){
+        this.useSound = enable;
+        if(enable) {
+            this.playGameMusic();
+        }
+        else {
+            this.stopMusic();
+        }
+    }
+
     public isSoundPlaying(ID: number) {
         var state = cc.audioEngine.getState(ID);
         if (state == cc.audioEngine.AudioState.PLAYING) {
@@ -85,6 +96,7 @@ export default class SoundManager extends cc.Component {
     }
 
     public stopMusic() {
+        this.isPlayedMusic = false;
         cc.audioEngine.stopMusic();
 
     }

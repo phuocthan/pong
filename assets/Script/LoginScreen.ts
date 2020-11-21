@@ -45,6 +45,9 @@ export default class LoginController extends cc.Component {
     inputCPassword: cc.EditBox = null;
 
     @property( cc.EditBox )
+    inputZipPostal: cc.EditBox = null;
+
+    @property( cc.EditBox )
     loginEmail: cc.EditBox = null;
 
     @property( cc.EditBox )
@@ -98,6 +101,7 @@ export default class LoginController extends cc.Component {
             "confirmPassword": this.inputCPassword.string,
             "username": this.inputUserName.string,
             "birthday": GameController.inst.birthDate,
+            "zip": this.inputZipPostal.string
         };
         cc.log( 'sign up info ', params );
         GameAPI.getInstance().register(params);
