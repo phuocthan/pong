@@ -70,8 +70,9 @@ export default class LoginController extends cc.Component {
         LoginController.inst = this;
     }
     gotoScreen ( isLogin ) {
-        this.signInNode.active = isLogin;
-        this.signUpNode.active = !isLogin;
+        // this.signInNode.active = isLogin;
+        this.signInNode.active = !isLogin;
+        this.signUpNode.active = isLogin;
     }
     clickOnLoginBtn () {
         this.hideAPIError();
@@ -85,6 +86,12 @@ export default class LoginController extends cc.Component {
         GameAPI.getInstance().login(params);
     }
     clickOnSignUpHereBtn () {
+        this.hideAPIError();
+        SoundManager.inst.playSFX( AudioClips.BtnClick_sfx );
+        this.gotoScreen( true );
+        // GameController.inst.gotoScreen(SCREEN.HOME_SCREEN);
+    }
+    clickOnSignInHereBtn () {
         this.hideAPIError();
         SoundManager.inst.playSFX( AudioClips.BtnClick_sfx );
         this.gotoScreen( false );

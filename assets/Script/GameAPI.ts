@@ -30,7 +30,8 @@ export default class GameAPI{
     }
 
     // readonly serviceURL = 'http://35.238.238.41:3000/';    
-    readonly serviceURL = 'http://69.160.250.66:4000/';
+    // readonly serviceURL = 'http://69.160.250.66:4000/';
+    readonly serviceURL = 'http://34.236.28.152:3000/';
     authTokenList = [
         // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTYwNTU4MjA0MiwiZXhwIjoxNjA2MTg2ODQyfQ.8ZuPX8DClj9O1j3Sw-M6gUpAMFAQ7r11tCwZyUEMnnk',
         // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTYwNTU4ODE3MSwiZXhwIjoxNjA2MTkyOTcxfQ.i5bkLcj8k090xmDmAkbNRIbam4rxAfiJBEf46_SCco8'
@@ -69,7 +70,7 @@ export default class GameAPI{
             "confirmPassword" : params.confirmPassword,
             "username" : params.username,
             "birthday" : params.birthday,
-            "zip" : params.zip
+            "zip" : params.zip,
         };
         const authToken = null;
         let t = this;
@@ -84,7 +85,11 @@ export default class GameAPI{
                 cc.log('getOTP Error ',this.infoMessage);
                 // GameController.inst.showInfo(this.infoMessage);
             }
-            LoginController.getInstance().gotoScreen(true);
+            // LoginController.getInstance().gotoScreen(true);
+            /////
+            this.login(params);
+            GameController.inst.gotoScreen( SCREEN.HOME_SCREEN );
+            this.getLeaderBoards();           
         }        
         new Promise((resolve, reject) => {
             t.servicePost('POST', route, pars, authToken, (err, result) => {
@@ -99,6 +104,7 @@ export default class GameAPI{
                 if(jsonData) {
                     this.registerSuccess = jsonData.success;
                     this.infoMessage = jsonData.message;
+                    GameController.inst.updateHighScore(0);
                 }
                 resolve(result);
             });
@@ -131,6 +137,7 @@ export default class GameAPI{
                 cc.log('login Error ',this.infoMessage);
                 // GameController.inst.showInfo(this.infoMessage);
             }
+            //////
             GameController.inst.gotoScreen( SCREEN.HOME_SCREEN );
             this.getLeaderBoards();
             

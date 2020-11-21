@@ -7,7 +7,7 @@ import TouchPlay from "./TouchPlay";
 import { Utils } from "./Utils";
 
 const {ccclass, property} = cc._decorator;
-const DEFAULT_TIME_MATCH = 30;
+const DEFAULT_TIME_MATCH = 90;
 export enum SCREEN {
     AGE_GATE,
     GAME_PLAY,

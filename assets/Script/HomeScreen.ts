@@ -1,6 +1,7 @@
 import GameAPI from "./GameAPI";
 import GameController, { SCREEN } from "./GameController";
 import LeaderBoardScreen from "./LeaderBoardScreen";
+import LoginScreen from "./LoginScreen";
 import SoundManager, { AudioClips } from "./SoundManager";
 
 const { ccclass, property } = cc._decorator;
@@ -71,7 +72,9 @@ export default class HomeScreenController extends cc.Component {
     }
     clickOnLogOutBtn () {
         SoundManager.inst.playSFX(AudioClips.BtnClick_sfx);
+        LoginScreen.inst.gotoScreen(false);
         GameController.inst.gotoScreen(SCREEN.LOGIN);
+        
     }
     
 
