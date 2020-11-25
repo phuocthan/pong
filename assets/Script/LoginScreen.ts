@@ -57,6 +57,7 @@ export default class LoginController extends cc.Component {
     logUpError: cc.Label = null;
     public static inst : LoginController = null;
     curToken = null;
+    isIOSDevice = false;
     public static getInstance(): LoginController {
         if (!LoginController.inst) {
             LoginController.inst = new LoginController();
@@ -68,6 +69,7 @@ export default class LoginController extends cc.Component {
         this.hideAPIError();
         this.gotoScreen( true );
         LoginController.inst = this;
+        this.isIOSDevice = cc.sys.os == cc.sys.OS_IOS;
     }
     gotoScreen ( isLogin ) {
         // this.signInNode.active = isLogin;
@@ -117,6 +119,30 @@ export default class LoginController extends cc.Component {
         // GameController.inst.gotoScreen(SCREEN.HOME_SCREEN);
     }
     
+    clickOnBuyBeerBtn () {
+        let url = 'http://buybeeronline.com/';
+        const term = document.createElement( "a" );
+        term.href = url;
+        if(!this.isIOSDevice)
+            term.target = '_blank';
+        term.click();
+    }
+    clickOnBuyBeerPrivacy () {
+        let url = 'http://buybeeronline.com/privacy';
+        const term = document.createElement( "a" );
+        term.href = url;
+        if(!this.isIOSDevice)        
+            term.target = '_blank';
+        term.click();
+    }
+    clickOnBuyBeerTnC () {
+        let url = 'http://buybeeronline.com/terms';
+        const term = document.createElement( "a" );
+        term.href = url;
+        if(!this.isIOSDevice)        
+            term.target = '_blank';
+        term.click();
+    }
     hideAPIError (){
         this.errorLoginLabel.enabled = false;
         this.errorLoginLabel.string = '';
